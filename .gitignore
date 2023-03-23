@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/java/com/miramontes/hoteldemorest/client/generated/
+/src/main/java/META-INF/sun-jaxb.episode

@@ -1,4 +1,4 @@
-package com.miramontes.HotelDemoRestBoot;
+package com.miramontes.hoteldemorest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
