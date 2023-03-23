@@ -1,10 +1,7 @@
 package com.miramontes.hoteldemorest.controller;
 
 import com.miramontes.hoteldemorest.client.HotelClient;
-import com.miramontes.hoteldemorest.client.generated.Hotel;
-import com.miramontes.hoteldemorest.client.generated.Response;
-import com.miramontes.hoteldemorest.client.generated.ResponseHotel;
-import com.miramontes.hoteldemorest.client.generated.ResponseHotelList;
+import com.miramontes.hoteldemorest.client.generated.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +31,7 @@ public class HotelController {
     }
 
     @PostMapping("/")
-    public ResponseHotel create(@RequestBody Hotel hotel) {
-        return hotelClient.create(hotel);
+    public ResponseHotel create(@RequestBody CreateHotelRequest request) {
+        return hotelClient.create(request);
     }
 }
