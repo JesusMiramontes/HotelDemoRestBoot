@@ -28,18 +28,8 @@ public class HotelController {
         return hotelClient.delete(id);
     }
 
-    @PutMapping("/{id}")
-    public ResponseHotel update(
-            @PathVariable Integer id,
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String address,
-            @RequestParam(required = false) int rating) {
-        Hotel hotel = new Hotel();
-        hotel.setId(id);
-        hotel.setName(name);
-        hotel.setAddress(address);
-        hotel.setRating(rating);
-
+    @PutMapping("/")
+    public ResponseHotel update(@RequestBody Hotel hotel) {
         return hotelClient.update(hotel);
     }
 
