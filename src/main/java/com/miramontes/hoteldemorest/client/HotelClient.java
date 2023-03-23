@@ -23,4 +23,11 @@ public class HotelClient extends WebServiceGatewaySupport {
 
         return (Response) getWebServiceTemplate().marshalSendAndReceive(request);
     }
+
+    public ResponseHotel update(Hotel hotel) {
+        UpdateRequest request = new UpdateRequest();
+        request.setHotel(hotel);
+
+        return (ResponseHotel) getWebServiceTemplate().marshalSendAndReceive(request);
+    }
 }

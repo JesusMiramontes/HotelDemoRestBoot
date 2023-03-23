@@ -1,6 +1,7 @@
 package com.miramontes.hoteldemorest.controller;
 
 import com.miramontes.hoteldemorest.client.HotelClient;
+import com.miramontes.hoteldemorest.client.generated.Hotel;
 import com.miramontes.hoteldemorest.client.generated.Response;
 import com.miramontes.hoteldemorest.client.generated.ResponseHotel;
 import com.miramontes.hoteldemorest.client.generated.ResponseHotelList;
@@ -25,5 +26,20 @@ public class HotelController {
     @DeleteMapping("/{id}")
     public Response delete(@PathVariable Integer id) {
         return hotelClient.delete(id);
+    }
+
+    @PostMapping("/{id}")
+    public ResponseHotel update(
+            @PathVariable Integer id,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String address,
+            @RequestParam(required = false) int rating) {
+        Hotel hotel = new Hotel();
+        hotel.setId(id);
+        hotel.setName(name);
+        hotel.setAddress(address);
+        hotel.setRating(rating);
+
+        return hotelClient.update(hotel);
     }
 }
