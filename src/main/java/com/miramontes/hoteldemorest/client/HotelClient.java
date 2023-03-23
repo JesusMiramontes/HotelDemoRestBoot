@@ -1,9 +1,6 @@
 package com.miramontes.hoteldemorest.client;
 
-import com.miramontes.hoteldemorest.client.generated.GetByIdRequest;
-import com.miramontes.hoteldemorest.client.generated.GetHotelListRequest;
-import com.miramontes.hoteldemorest.client.generated.ResponseHotel;
-import com.miramontes.hoteldemorest.client.generated.ResponseHotelList;
+import com.miramontes.hoteldemorest.client.generated.*;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 public class HotelClient extends WebServiceGatewaySupport {
@@ -18,5 +15,12 @@ public class HotelClient extends WebServiceGatewaySupport {
     public ResponseHotelList getAll() {
         return (ResponseHotelList)
                 getWebServiceTemplate().marshalSendAndReceive(new GetHotelListRequest());
+    }
+
+    public Response delete(Integer id) {
+        DeleteRequest request = new DeleteRequest();
+        request.setId(id);
+
+        return (Response) getWebServiceTemplate().marshalSendAndReceive(request);
     }
 }
