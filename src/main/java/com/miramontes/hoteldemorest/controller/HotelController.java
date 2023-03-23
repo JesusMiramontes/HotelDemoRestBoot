@@ -43,5 +43,8 @@ public class HotelController {
         return hotelClient.update(hotel);
     }
 
-
+    @PostMapping("/")
+    public ResponseHotel create(@RequestBody Hotel hotel) {
+        return hotelClient.create(hotel);
+    }
 }
