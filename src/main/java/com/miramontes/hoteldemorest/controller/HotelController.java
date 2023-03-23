@@ -28,7 +28,7 @@ public class HotelController {
         return hotelClient.delete(id);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseHotel update(
             @PathVariable Integer id,
             @RequestParam(required = false) String name,
@@ -42,4 +42,6 @@ public class HotelController {
 
         return hotelClient.update(hotel);
     }
+
+
 }
