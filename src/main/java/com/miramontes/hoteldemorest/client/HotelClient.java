@@ -17,6 +17,13 @@ public class HotelClient extends WebServiceGatewaySupport {
                 getWebServiceTemplate().marshalSendAndReceive(new GetHotelListRequest());
     }
 
+    public ResponseHotelList getAllByNameLike(String name) {
+        GetHotelListByNameLikeRequest request = new GetHotelListByNameLikeRequest();
+        request.setName(name);
+
+        return (ResponseHotelList) getWebServiceTemplate().marshalSendAndReceive(request);
+    }
+
     public Response delete(Integer id) {
         DeleteRequest request = new DeleteRequest();
         request.setId(id);

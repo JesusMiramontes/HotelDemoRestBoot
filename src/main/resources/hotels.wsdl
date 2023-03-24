@@ -35,6 +35,14 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="getHotelListByNameLikeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <!-- Create -->
     <xs:element name="createHotelRequest">
         <xs:complexType>
@@ -121,6 +129,10 @@
 
 </xs:schema>
   </wsdl:types>
+  <wsdl:message name="getHotelListByNameLikeRequest">
+    <wsdl:part element="tns:getHotelListByNameLikeRequest" name="getHotelListByNameLikeRequest">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getByIdRequest">
     <wsdl:part element="tns:getByIdRequest" name="getByIdRequest">
     </wsdl:part>
@@ -154,6 +166,10 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="HotelsPort">
+    <wsdl:operation name="getHotelListByNameLike">
+      <wsdl:input message="tns:getHotelListByNameLikeRequest" name="getHotelListByNameLikeRequest">
+    </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="getById">
       <wsdl:input message="tns:getByIdRequest" name="getByIdRequest">
     </wsdl:input>
@@ -185,6 +201,12 @@
   </wsdl:portType>
   <wsdl:binding name="HotelsPortSoap11" type="tns:HotelsPort">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getHotelListByNameLike">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getHotelListByNameLikeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="getById">
       <soap:operation soapAction=""/>
       <wsdl:input name="getByIdRequest">

@@ -15,6 +15,11 @@ public class HotelController {
         return hotelClient.getAll();
     }
 
+    @GetMapping("/search")
+    public ResponseHotelList search(@RequestParam String name) {
+        return hotelClient.getAllByNameLike(name);
+    }
+
     @GetMapping("/{id}")
     public ResponseHotel byId(@PathVariable Integer id) {
         return hotelClient.getById(id);
