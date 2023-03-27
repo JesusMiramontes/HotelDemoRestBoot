@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://localhost:8080/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost:8080/" targetNamespace="http://localhost:8080/">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://localhost:8081/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost:8081/" targetNamespace="http://localhost:8081/">
   <wsdl:types>
-    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://localhost:8080/">
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://localhost:8081/">
 
     <!-- Models -->
     <xs:complexType name="Hotel">
@@ -129,16 +129,16 @@
 
 </xs:schema>
   </wsdl:types>
-  <wsdl:message name="getHotelListByNameLikeRequest">
-    <wsdl:part element="tns:getHotelListByNameLikeRequest" name="getHotelListByNameLikeRequest">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="getByIdRequest">
     <wsdl:part element="tns:getByIdRequest" name="getByIdRequest">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="deleteRequest">
     <wsdl:part element="tns:deleteRequest" name="deleteRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHotelListByNameLikeRequest">
+    <wsdl:part element="tns:getHotelListByNameLikeRequest" name="getHotelListByNameLikeRequest">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="createHotelRequest">
@@ -153,29 +153,29 @@
     <wsdl:part element="tns:updateAmenitiesHotelLinkByIdRequest" name="updateAmenitiesHotelLinkByIdRequest">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="Response">
-    <wsdl:part element="tns:Response" name="Response">
+  <wsdl:message name="updateRequest">
+    <wsdl:part element="tns:updateRequest" name="updateRequest">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getHotelListRequest">
     <wsdl:part element="tns:getHotelListRequest" name="getHotelListRequest">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="updateRequest">
-    <wsdl:part element="tns:updateRequest" name="updateRequest">
+  <wsdl:message name="Response">
+    <wsdl:part element="tns:Response" name="Response">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="HotelsPort">
-    <wsdl:operation name="getHotelListByNameLike">
-      <wsdl:input message="tns:getHotelListByNameLikeRequest" name="getHotelListByNameLikeRequest">
-    </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="getById">
       <wsdl:input message="tns:getByIdRequest" name="getByIdRequest">
     </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="delete">
       <wsdl:input message="tns:deleteRequest" name="deleteRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getHotelListByNameLike">
+      <wsdl:input message="tns:getHotelListByNameLikeRequest" name="getHotelListByNameLikeRequest">
     </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="createHotel">
@@ -190,23 +190,17 @@
       <wsdl:input message="tns:updateAmenitiesHotelLinkByIdRequest" name="updateAmenitiesHotelLinkByIdRequest">
     </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="getHotelList">
-      <wsdl:input message="tns:getHotelListRequest" name="getHotelListRequest">
-    </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="update">
       <wsdl:input message="tns:updateRequest" name="updateRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getHotelList">
+      <wsdl:input message="tns:getHotelListRequest" name="getHotelListRequest">
     </wsdl:input>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="HotelsPortSoap11" type="tns:HotelsPort">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="getHotelListByNameLike">
-      <soap:operation soapAction=""/>
-      <wsdl:input name="getHotelListByNameLikeRequest">
-        <soap:body use="literal"/>
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="getById">
       <soap:operation soapAction=""/>
       <wsdl:input name="getByIdRequest">
@@ -216,6 +210,12 @@
     <wsdl:operation name="delete">
       <soap:operation soapAction=""/>
       <wsdl:input name="deleteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getHotelListByNameLike">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getHotelListByNameLikeRequest">
         <soap:body use="literal"/>
       </wsdl:input>
     </wsdl:operation>
@@ -237,22 +237,22 @@
         <soap:body use="literal"/>
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="getHotelList">
-      <soap:operation soapAction=""/>
-      <wsdl:input name="getHotelListRequest">
-        <soap:body use="literal"/>
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="update">
       <soap:operation soapAction=""/>
       <wsdl:input name="updateRequest">
         <soap:body use="literal"/>
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="getHotelList">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getHotelListRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="HotelsPortService">
     <wsdl:port binding="tns:HotelsPortSoap11" name="HotelsPortSoap11">
-      <soap:address location="http://localhost:8080/service/hotels"/>
+      <soap:address location="http://localhost:8081/service/hotels"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

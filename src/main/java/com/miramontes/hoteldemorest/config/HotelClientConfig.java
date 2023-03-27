@@ -18,7 +18,7 @@ public class HotelClientConfig {
     @Bean
     public HotelClient hotelClient(Jaxb2Marshaller marshaller) {
         HotelClient client = new HotelClient();
-        client.setDefaultUri("http://localhost:8080/service/hotels");
+        client.setDefaultUri("http://localhost:8081/service/hotels");
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;
