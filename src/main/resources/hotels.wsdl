@@ -35,6 +35,13 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="getAmenitiesListRequest">
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="getHotelListByNameLikeRequest">
         <xs:complexType>
             <xs:sequence>
@@ -126,9 +133,21 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <xs:element name="responseAmenitiesList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="responseStatus" type="tns:ResponseStatus"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="amenities" type="tns:Amenity"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
 </xs:schema>
   </wsdl:types>
+  <wsdl:message name="getAmenitiesListRequest">
+    <wsdl:part element="tns:getAmenitiesListRequest" name="getAmenitiesListRequest">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getByIdRequest">
     <wsdl:part element="tns:getByIdRequest" name="getByIdRequest">
     </wsdl:part>
@@ -166,6 +185,10 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="HotelsPort">
+    <wsdl:operation name="getAmenitiesList">
+      <wsdl:input message="tns:getAmenitiesListRequest" name="getAmenitiesListRequest">
+    </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="getById">
       <wsdl:input message="tns:getByIdRequest" name="getByIdRequest">
     </wsdl:input>
@@ -201,6 +224,12 @@
   </wsdl:portType>
   <wsdl:binding name="HotelsPortSoap11" type="tns:HotelsPort">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAmenitiesList">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAmenitiesListRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="getById">
       <soap:operation soapAction=""/>
       <wsdl:input name="getByIdRequest">

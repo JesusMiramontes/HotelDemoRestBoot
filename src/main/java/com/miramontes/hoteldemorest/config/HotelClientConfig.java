@@ -1,5 +1,6 @@
 package com.miramontes.hoteldemorest.config;
 
+import com.miramontes.hoteldemorest.client.AmenityClient;
 import com.miramontes.hoteldemorest.client.HotelClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,15 @@ public class HotelClientConfig {
     @Bean
     public HotelClient hotelClient(Jaxb2Marshaller marshaller) {
         HotelClient client = new HotelClient();
+        client.setDefaultUri("http://localhost:8081/service/hotels");
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        return client;
+    }
+
+    @Bean
+    public AmenityClient amenityClient(Jaxb2Marshaller marshaller) {
+        AmenityClient client = new AmenityClient();
         client.setDefaultUri("http://localhost:8081/service/hotels");
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
