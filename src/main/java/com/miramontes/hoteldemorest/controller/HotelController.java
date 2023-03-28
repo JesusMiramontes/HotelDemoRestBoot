@@ -39,4 +39,16 @@ public class HotelController {
     public ResponseHotel create(@RequestBody CreateHotelRequest request) {
         return hotelClient.create(request);
     }
+
+    @PutMapping("/updateAmenitiesById")
+    public ResponseHotel updateAmenitiesById(
+            @RequestBody UpdateAmenitiesHotelLinkByIdRequest request) {
+        return hotelClient.updateAmenitiesById(request);
+    }
+
+    @PutMapping("/updateAmenitiesByName")
+    public ResponseHotel updateAmenitiesByName(
+            @RequestBody UpdateAmenitiesHotelLinkByNameRequest request) {
+        return hotelClient.updateAmenitiesByName(request);
+    }
 }

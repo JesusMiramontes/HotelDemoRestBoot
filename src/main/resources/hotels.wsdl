@@ -94,7 +94,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="hotelId" type="xs:int"/>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="amenityNames" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="amenitiesNames" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -104,7 +104,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="hotelId" type="xs:int"/>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="amenityIds" type="xs:int"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="amenitiesIds" type="xs:int"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
